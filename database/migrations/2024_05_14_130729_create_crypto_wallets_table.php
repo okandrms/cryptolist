@@ -17,7 +17,7 @@ class CreateCryptoWalletsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('name');
+            $table->string('name', 191); 
             $table->timestamps();
         });
 
@@ -52,8 +52,8 @@ class CreateCryptoWalletsTable extends Migration
 
         Schema::create('crypto_portfolio_snapshot_details', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('crypto_portfolio_snapshot_id');
-            $table->foreign('crypto_portfolio_snapshot_id', 'fk_snapshot_id')->references('id')->on('crypto_portfolio_snapshots')->onDelete('cascade');
+            $table->unsignedBigInteger('portfolio_snapshot_id');
+            $table->foreign('portfolio_snapshot_id', 'fk_snapshot_id')->references('id')->on('crypto_portfolio_snapshots')->onDelete('cascade');
             $table->unsignedBigInteger('crypto_wallet_id');
             $table->foreign('crypto_wallet_id')->references('id')->on('crypto_wallets')->onDelete('cascade');
             $table->decimal('value', 18, 8);
@@ -62,9 +62,11 @@ class CreateCryptoWalletsTable extends Migration
 
         Schema::create('personal_access_tokens', function (Blueprint $table) {
             $table->id();
-            $table->morphs('tokenable');
-            $table->string('name');
-            $table->string('token', 64)->unique();
+            $table->string('tokenable_type', 191); 
+            $table->unsignedBigInteger('tokenable_id');
+            $table->index(['tokenable_type', 'tokenable_id']); 
+            $table->string('name', 191);
+            $table->string('token', 191)->unique(); 
             $table->text('abilities')->nullable();
             $table->timestamp('last_used_at')->nullable();
             $table->timestamps();
@@ -86,3 +88,7 @@ class CreateCryptoWalletsTable extends Migration
         Schema::dropIfExists('crypto_wallets');
     }
 }
+
+
+
+

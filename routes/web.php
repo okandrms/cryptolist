@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\BitcoinPriceController;
+use App\Http\Controllers\BitcoinController;
 
 
 Route::get('/', function () {
@@ -29,13 +30,13 @@ Route::get('/bitcoin-price', function () {
 
 
 // Example routes to interact with BitcoinPriceController
-Route::get('/bitcoin/investment', [BitcoinPriceController::class, 'getTotalInvestment']);
+/* Route::get('/bitcoin/investment', [BitcoinPriceController::class, 'getTotalInvestment']);
 Route::get('/bitcoin/bitcoins', [BitcoinPriceController::class, 'getTotalBitcoins']);
 Route::get('/bitcoin/value', [BitcoinPriceController::class, 'getCurrentValue']);
 Route::get('/bitcoin/profit', [BitcoinPriceController::class, 'getProfitOrLoss']);
 Route::post('/bitcoin/purchase', [BitcoinPriceController::class, 'addPurchase']);
-Route::post('/bitcoin/update-price', [BitcoinPriceController::class, 'updateCurrentBitcoinPrice']);
-Route::get('/bitcoin/display', [BitcoinPriceController::class, 'display']);
+Route::post('/bitcoin/update-price', [BitcoinPriceController::class, 'updateCurrentBitcoinPrice']); */
+Route::get('/bitcoin/display', [BitcoinController::class, 'display']);
 
 
 

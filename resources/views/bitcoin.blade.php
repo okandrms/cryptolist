@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Bitcoin Tracker</h1>
+    <h2>Our price of BTC at the momen: {{ $currentBitcoinPrice }}</h2>
     <div>
         <p>Total investment: {{ $totalInvestment }} euro</p>
         <p>Total Bitcoins: {{ $totalBitcoins }}</p>

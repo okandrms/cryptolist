@@ -10,6 +10,9 @@ class FetchController extends Controller
     {
         $json = file_get_contents('https://api.coindesk.com/v1/bpi/currentprice.json');
         $data = json_decode($json, true);
-        return $data['bpi']['EUR']['rate'];
+        // dd($data);
+        return $data['bpi']['EUR']['rate_float'];
     }   
+
+   
 }

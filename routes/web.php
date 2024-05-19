@@ -28,7 +28,6 @@ Route::get('/bitcoin-price', function () {
 });
 
 
-
 // Example routes to interact with BitcoinPriceController
 /* Route::get('/bitcoin/investment', [BitcoinPriceController::class, 'getTotalInvestment']);
 Route::get('/bitcoin/bitcoins', [BitcoinPriceController::class, 'getTotalBitcoins']);
@@ -38,6 +37,5 @@ Route::post('/bitcoin/purchase', [BitcoinPriceController::class, 'addPurchase'])
 Route::post('/bitcoin/update-price', [BitcoinPriceController::class, 'updateCurrentBitcoinPrice']); */
 Route::get('/bitcoin/display', [BitcoinController::class, 'display']);
 
-
-
+Route::post('bitcoin', [BitcoinController::class, 'buyBitcoin'])->name('buy.bitcoin');
 require __DIR__.'/auth.php';

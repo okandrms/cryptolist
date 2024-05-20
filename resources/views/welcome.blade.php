@@ -26,14 +26,18 @@
             justify-content: center;
             min-height: 100vh;
         }
-        .header {
+         .header {
             display: flex;
             justify-content: flex-end;
-            width: 100%;
+            align-items: center;
+            width: 90%;
             padding: 20px;
         }
-        .header a {
-            margin-right: 20px;
+        
+        .header a, .header form {
+            margin-bottom: 10px; /* Added margin to separate buttons */
+        }
+        .header a, .header button {
             text-decoration: none;
             padding: 10px 15px;
             border-radius: 5px;
@@ -41,12 +45,31 @@
             background-color: #009879; 
             transition: background-color 0.3s;
         }
-        .header a:hover {
+        .header a:hover, .header button:hover {
             background-color: #007965; 
         }
-        .header a:focus {
+        .header a:focus, .header button:focus {
             outline: 2px solid #005f4e; 
         }
+        .header button {
+            border: none;
+            cursor: pointer;
+        }
+
+        .header a {
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        color: #fff;
+        background-color: #009879;
+        transition: background-color 0.3s;
+        margin-right: 15px; /* Burada boşluk ekleyin */
+    }
+
+      .header a:last-child {
+    margin-right: 0; /* Son link için boşluk ekleme */
+     }
+
         .content {
             text-align: center;
             background-color: rgba(255, 255, 255, 0.8); /* Sayfa içeriğine yarı saydamlık eklemek için */
@@ -74,11 +97,16 @@
             @if (Route::has('login'))
                 @auth
                     <a href="{{ url('/dashboard') }}">Dashboard</a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit">Logout</button>
+                    </form>
                 @else
-                    <a href="{{ route('login') }}">Log in</a>
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Register</a>
-                    @endif
+                    <a href="{{ route('login') }}" class="auth-link">Log in</a>
+                      @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="auth-link">Register</a>
+                       @endif
+
                 @endauth
             @endif
         </div>

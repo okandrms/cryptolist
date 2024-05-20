@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\BitcoinPriceController;
 use App\Http\Controllers\BitcoinController;
-
+use App\Http\Controllers\WalletController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,4 +38,7 @@ Route::post('/bitcoin/update-price', [BitcoinPriceController::class, 'updateCurr
 Route::get('/bitcoin/display', [BitcoinController::class, 'display']);
 
 Route::post('bitcoin', [BitcoinController::class, 'buyBitcoin'])->name('buy.bitcoin');
+
+
+Route::get('/myWallet', [WalletController::class, 'myWallet'])->name('myWallet');
 require __DIR__.'/auth.php';

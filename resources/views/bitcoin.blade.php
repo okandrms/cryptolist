@@ -1,19 +1,40 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitcoin Tracker</title>
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .my-wallet-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .my-wallet-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
   <div class="container">
+    <a href="{{ url('/myWallet') }}"<button class="my-wallet-btn" >My Wallet</button></a>
     <h1 class="title">Bitcoin Tracker</h1>
     <h2>Our price of BTC at the moment: {{ $currentBitcoinPrice }}</h2>
-  
+
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
 
     <div>
     <form method="POST" action="{{ route('buy.bitcoin') }}">
@@ -32,7 +53,6 @@
         <td><input type="number" disabled name="btcAmount" value=""></td>        
         <td><button type="submit"  class="btn save-btn">Buy</button></td> 
     </tr>
-     
 </table>
 
   <h2>All Transactions</h2>
@@ -69,13 +89,15 @@
     function calculate() {
       let amount = document.getElementsByName('amount')[0].value;
       let btcPrice = document.getElementsByName('btcPrice')[0].value;
-      let btcAmount = amount/btcPrice;
+
+      if (!amount || amount == 0) {
+        document.getElementsByName('btcAmount')[0].value = "";
+        return;
+      }
+
+      let btcAmount = amount / btcPrice;
       document.getElementsByName('btcAmount')[0].value = btcAmount;
     }   
-
   </script>
 </body>
 </html>
-
-
-

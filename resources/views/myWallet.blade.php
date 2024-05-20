@@ -11,14 +11,15 @@
             color: #333;
             margin: 0;
             padding: 20px;
+            position: relative;
         }
         .info {
             background-color: #009879;
             color: white;
             padding: 10px;
             border-radius: 5px;
+            margin-bottom: 20px;
             width: fit-content;
-            margin-top : 50px;
         }
         .info p {
             margin: 5px 0;
@@ -26,6 +27,18 @@
         .info p strong {
             display: inline-block;
             width: 150px;
+        }
+        .home-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #009879;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
         }
         h1 {
             color: #009879;
@@ -52,6 +65,11 @@
             background-color: #f2f2f2;
         }
     </style>
+    <script>
+        function goToHomePage() {
+            window.location.href = '/';  // Ana sayfa URL'sini buraya ekleyin
+        }
+    </script>
 </head>
 <body>
     <div class="info">
@@ -59,6 +77,7 @@
         <p><strong>Total Bitcoins:</strong> 987.98631053909</p>
         <p><strong>Current Bitcoin Price:</strong> 63932.1708</p>
     </div>
+    <button class="home-button" onclick="goToHomePage()">Home</button>
     <h1>My Wallet</h1>
     <table>
         <thead>

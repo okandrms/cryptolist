@@ -7,26 +7,31 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        .my-wallet-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
+        .button-container {
+            display: flex;
+            gap: 10px;
+        }
+        .button-container button {
             padding: 10px 20px;
-            background-color: #4CAF50;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #009879;
             color: white;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
         }
-        .my-wallet-btn:hover {
-            background-color: #45a049;
+        .button-container button:hover {
+            background-color: #00735e;
         }
     </style>
 </head>
 <body>
   <div class="container">
-    <a href="{{ url('/myWallet') }}"<button class="my-wallet-btn" >My Wallet</button></a>
+    <div class="button-container">
+      
+      <a href="{{ url('/') }}"><button class="home-btn">Home</button></a>
+      <a href="{{ url('/myWallet') }}"><button class="my-wallet-btn">My Wallet</button></a>
+    </div>
     <h1 class="title">Bitcoin Tracker</h1>
     <h2>Our price of BTC at the moment: {{ $currentBitcoinPrice }}</h2>
 

@@ -83,18 +83,3 @@ body {
     border-radius: 4px;
 }
 
-.my-wallet-btn {
-    position: absolute;
-    top: 50px;
-    right: 70px;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-.my-wallet-btn:hover {
-    background-color: #45a049;
-}

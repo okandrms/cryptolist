@@ -10,7 +10,7 @@ class FetchController extends Controller
 {
     public static function getBitcoinPrice()
     {
-        $json = Http::get('https://api.coindesk.com/v1/bpi/currentprice.json');
+        $json = Http::withoutVerifying()->withOptions(["verify"=>false])->get('https://api.coindesk.com/v1/bpi/currentprice.json');
         $data = json_decode($json, true);
         // dd($data);
         return $data['bpi']['EUR']['rate_float'];

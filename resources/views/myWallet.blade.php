@@ -67,15 +67,15 @@
     </style>
     <script>
         function goToHomePage() {
-            window.location.href = '/';  // Ana sayfa URL'sini buraya ekleyin
+            window.location.href = '/';
         }
     </script>
 </head>
 <body>
     <div class="info">
-        <p><strong>Total Investment:</strong> 60173848</p>
-        <p><strong>Total Bitcoins:</strong> 987.98631053909</p>
-        <p><strong>Current Bitcoin Price:</strong> 63932.1708</p>
+        <p><strong>Total Investment:</strong> {{$totalInvestment}}</p>
+        <p><strong>Total Bitcoins:</strong> {{$totalBitcoins}} </p>
+        <p><strong>Current Bitcoin Price:</strong> {{$currentBitcoinPrice}}</p>
     </div>
     <button class="home-button" onclick="goToHomePage()">Home</button>
     <h1>My Wallet</h1>

@@ -11,41 +11,76 @@
         body {
             font-family: Figtree, ui-sans-serif, system-ui, sans-serif;
             background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
         .header-bg {
             background-image: url('https://example.com/bitcoin-banner.jpg');
             background-size: cover;
             background-position: center;
+            padding: 20px 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            color: white;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        h2 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+            margin-top: 10px;
         }
         .card {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             border-left: 4px solid #009879;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(33.333% - 20px);
+            max-width: calc(33.333% - 20px);
+            min-width: 280px;
+            box-sizing: border-box;
         }
-        .main-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .card-content {
-            padding: 20px;
-        }
-        h3 {
+        .card h3 {
             color: #009879;
-        }
-        .balance, .transactions, .price {
-            color: #009879;
+            margin: 0 0 5px;
+            font-size: 1.5rem;
         }
         .buy-button {
             display: inline-block;
             background-color: #009879;
             color: white;
-            padding: 10px 20px;
-            margin-left: 20px;
+            padding: 5px 10px;
             border-radius: 5px;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 14px;
             transition: background-color 0.3s;
+            margin-top: 5px;
         }
         .buy-button:hover {
             background-color: #007965;
@@ -53,21 +88,48 @@
         .buy-button:focus {
             outline: 2px solid #005f4e;
         }
+        footer {
+            margin-top: auto;
+            background-color: #009879;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+        }
     </style>
 </head>
-<body class="bg-gray-100">
+<body>
     <x-app-layout>
         <x-slot name="header">
-            <div class="header-bg py-12">
-                <div class="flex justify-center items-center">
-                    <h2 class="font-semibold text-3xl text-white leading-tight">
-                        {{ __('Dashboard') }}
-                    </h2>
-                    <a href="{{ url('/bitcoin/display') }}" class="buy-button">Buy</a>
+            <div class="header-bg">
+                <div class="container">
+                    <div class="header-content">
+                        <h2>{{ __('Dashboard') }}</h2>
+                        <a href="{{ url('/bitcoin/display') }}" class="buy-button">Buy Bitcoin</a>
+                    </div>
                 </div>
             </div>
         </x-slot>
-
+        <div class="container main-content">
+            <div class="card">
+                <h3>Balance</h3>
+                <p>Current balance: {{ $totalInvestment }}</p>
+                <a href="#" class="buy-button">View Details</a>
+            </div>
+            <div class="card">
+                <h3>Transactions</h3>
+                <p>{{ $totalBitcoins }}</p>
+                <a href="#" class="buy-button">View History</a>
+            </div>
+            <div class="card">
+                <h3>Bitcoin Price</h3>
+                <p>Current price: {{ $currentBitcoinPrice }}</p>
+                <a href="#" class="buy-button">View Chart</a>
+            </div>
+        </div>
     </x-app-layout>
+    <footer>
+        &copy; 2024 Bitcoin Dashboard. All rights reserved.
+    </footer>
 </body>
 </html>

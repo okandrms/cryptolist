@@ -14,8 +14,8 @@ class FetchController extends Controller
         $data = json_decode($json, true);
         // dd($data);
         return $data['bpi']['EUR']['rate_float'];
-    }   
-    
+    }
 
-   
+
+
 }

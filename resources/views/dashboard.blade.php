@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bitcoin Dashboard</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
+    <link rel="icon" type="image/png" href="{{ asset('assets/Bitcoin.png') }}">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <style>
@@ -114,7 +115,7 @@
             <div class="card">
                 <h3>Balance</h3>
                 <p>Current balance: {{ $totalInvestment }}</p>
-                <a href="#" class="buy-button">View Details</a>
+                <a href="{{ url('/myWallet') }}" class="buy-button">View Details</a>
             </div>
             <div class="card">
                 <h3>Transactions</h3>

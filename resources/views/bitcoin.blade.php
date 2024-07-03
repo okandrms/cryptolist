@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitcoin Tracker</title>
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/Bitcoin.png') }}">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <style>
@@ -147,6 +148,24 @@
         .styled-table tbody tr:last-of-type {
             border-bottom: 2px solid #009879;
         }
+
+        .button {
+            display: inline-block;
+            background-color: #009879;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            margin-top: 5px;
+        }
+        .button:hover {
+            background-color: #007965;
+        }
+        .button:focus {
+            outline: 2px solid #005f4e;
+        }
     </style>
 </head>
 <body>
@@ -154,8 +173,8 @@
         <div class="header-content">
             <h2>Bitcoin Tracker</h2>
             <div class="button-container">
-                <a href="{{ url('/') }}"><button class="home-btn">Home</button></a>
-                <a href="{{ url('/myWallet') }}"><button class="my-wallet-btn">My Wallet</button></a>
+                <a href="{{ url('/') }}"><button class="button">Home</button></a>
+                <a href="{{ url('/myWallet') }}"><button class="button">My Wallet</button></a>
             </div>
         </div>
         <div class="main-content">

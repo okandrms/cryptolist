@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bitcoin App</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
+    <link rel="icon" type="image/png" href="{{ asset('assets/Bitcoin.png') }}">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <style>
         body, html {
@@ -33,7 +34,7 @@
             width: 90%;
             padding: 20px;
         }
-        
+
         .header a, .header form {
             margin-bottom: 10px; /* Added margin to separate buttons */
         }
@@ -42,14 +43,14 @@
             padding: 10px 15px;
             border-radius: 5px;
             color: #fff;
-            background-color: #009879; 
+            background-color: #009879;
             transition: background-color 0.3s;
         }
         .header a:hover, .header button:hover {
-            background-color: #007965; 
+            background-color: #007965;
         }
         .header a:focus, .header button:focus {
-            outline: 2px solid #005f4e; 
+            outline: 2px solid #005f4e;
         }
         .header button {
             border: none;
@@ -63,16 +64,16 @@
         color: #fff;
         background-color: #009879;
         transition: background-color 0.3s;
-        margin-right: 15px; /* Burada boşluk ekleyin */
+        margin-right: 15px;
     }
 
       .header a:last-child {
-    margin-right: 0; /* Son link için boşluk ekleme */
+    margin-right: 0;
      }
 
         .content {
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.8); /* Sayfa içeriğine yarı saydamlık eklemek için */
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
         }
@@ -84,10 +85,28 @@
             color: #666;
         }
         .coin-image {
-            width: 250px; 
-            height: 250px; 
+            width: 250px;
+            height: 250px;
             margin-bottom: 50px;
-            border-radius: 50%; /* Kenarları yuvarlak yapmak için */
+            border-radius: 50%;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #009879;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            margin-top: 5px;
+        }
+        .button:hover {
+            background-color: #007965;
+        }
+        .button:focus {
+            outline: 2px solid #005f4e;
         }
     </style>
 </head>
@@ -96,10 +115,10 @@
         <div class="header">
             @if (Route::has('login'))
                 @auth
-                    <a href="{{ url('/dashboard') }}">Dashboard</a>
+                    <a href="{{ url('/dashboard') }}" class="button">Dashboard</a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit">Logout</button>
+                        <button class="button" type="submit">Logout</button>
                     </form>
                 @else
                     <a href="{{ route('login') }}" class="auth-link">Log in</a>
@@ -109,6 +128,7 @@
 
                 @endauth
             @endif
+
         </div>
         <div class="content">
             <img src="https://www.egehaber.com/wp-content/uploads/2021/09/analist-kacirmayin-bu-3-altcoin-gelecek-vaat-ediyor-K9rtabc6.jpg" alt="Coin Image" class="coin-image">

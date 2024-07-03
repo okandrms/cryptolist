@@ -16,7 +16,8 @@ class BitcoinController extends Controller
         $currentValue = 0;
         $profitOrLoss = 0;
         $eurRate = 0;
-        $allTransactions = Crypto_transaction::all();
+        $user_id = auth()->user()->id;
+        $allTransactions = Crypto_transaction::where('user_id', $user_id)->get();
 
         foreach ($allTransactions as $transaction) {
             $transaction->btc_amount = $transaction->amount / $transaction->price_per_unit;
@@ -46,5 +47,6 @@ class BitcoinController extends Controller
         }
 
         return view('bitcoin', compact('currentBitcoinPrice', 'allTransactions'));
+
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Controllers\FetchController;
 
 class Crypto_transaction extends Model
 {
@@ -10,11 +11,12 @@ class Crypto_transaction extends Model
 
     public function getCurrentValueAttribute()
     {
-        return $this->btc_amount * $this->price_per_unit;
+        $currentBitcoinPrice = FetchController::getBitcoinPrice(); // Fetch current price
+        return bcmul($this->btc_amount, $currentBitcoinPrice, 8);
     }
 
     public function getProfitOrLossAttribute()
     {
-        return $this->current_value - $this->amount;
+        return bcsub($this->current_value, $this->amount, 8);
     }
 }

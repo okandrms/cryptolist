@@ -125,7 +125,7 @@
             <div class="card">
                 <h3>Bitcoin Price</h3>
                 <p>Current price: {{ $currentBitcoinPrice }}</p>
-                <a href="#" class="buy-button">View Chart</a>
+                <a href="{{ url('/bitcoin-chart') }}" class="buy-button">View Chart</a>
             </div>
         </div>
     </x-app-layout>

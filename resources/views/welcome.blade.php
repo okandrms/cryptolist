@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bitcoin App</title>
+    <title>Home</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="icon" type="image/png" href="{{ asset('assets/Bitcoin.png') }}">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
@@ -14,11 +14,18 @@
             font-family: Figtree, ui-sans-serif, system-ui, sans-serif;
             background-color: #f9f9f9;
             color: #333;
+            overflow: hidden;
+        }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: url('https://kointimes.net/wp-content/uploads/2022/04/source-istock-koonsiri-boonnak.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-            overflow:hidden;
+            z-index: -1;
         }
         .container {
             display: flex;
@@ -27,51 +34,25 @@
             justify-content: center;
             min-height: 100vh;
         }
-         .header {
+        .header {
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
             align-items: center;
-            width: 90%;
+            width: 100%;
             padding: 20px;
         }
-
-        .header a, .header form {
-            margin-bottom: 10px; /* Added margin to separate buttons */
+        .header img {
+            height: 50px;
+            margin-right: 15px;
         }
-        .header a, .header button {
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            color: #fff;
-            background-color: #009879;
-            transition: background-color 0.3s;
+        .header h1 {
+            color: #009879;
         }
-        .header a:hover, .header button:hover {
-            background-color: #007965;
-        }
-        .header a:focus, .header button:focus {
-            outline: 2px solid #005f4e;
-        }
-        .header button {
-            border: none;
-            cursor: pointer;
-        }
-
-        .header a {
-        text-decoration: none;
-        padding: 10px 15px;
-        border-radius: 5px;
-        color: #fff;
-        background-color: #009879;
-        transition: background-color 0.3s;
-        margin-right: 15px;
-    }
-
-      .header a:last-child {
-    margin-right: 0;
-     }
-
         .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
@@ -83,6 +64,9 @@
             text-align: center;
             font-size: 14px;
             color: #666;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            position: relative;
         }
         .coin-image {
             width: 250px;
@@ -90,7 +74,6 @@
             margin-bottom: 50px;
             border-radius: 50%;
         }
-
         .button {
             display: inline-block;
             background-color: #009879;
@@ -111,33 +94,24 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="background"></div>
+
+    <x-app-layout>
         <div class="header">
-            @if (Route::has('login'))
-                @auth
-                    <a href="{{ url('/dashboard') }}" class="button">Dashboard</a>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button class="button" type="submit">Logout</button>
-                    </form>
-                @else
-                    <a href="{{ route('login') }}" class="auth-link">Log in</a>
-                      @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="auth-link">Register</a>
-                       @endif
 
-                @endauth
-            @endif
+            <h1>Welcome to Bitcoin Tracker App</h1>
+        </div>
 
+        <div class="container">
+            <div class="content">
+                <img src="{{ asset('assets/Bitcoinn.jpg') }}" alt="Coin Image" class="coin-image">
+                <p>Your one-stop solution for managing your Bitcoin transactions.</p>
+                <a href="{{ url('/bitcoin-chart') }}" class="button">View Bitcoin Chart</a>
+            </div>
+            <footer>
+                &copy; {{ date('Y') }} Bitcoin App. All rights reserved.
+            </footer>
         </div>
-        <div class="content">
-            <img src="https://www.egehaber.com/wp-content/uploads/2021/09/analist-kacirmayin-bu-3-altcoin-gelecek-vaat-ediyor-K9rtabc6.jpg" alt="Coin Image" class="coin-image">
-            <h1>Welcome to BlackSmits Coin App</h1>
-            <p>Your one-stop solution for managing your Bitcoin transactions.</p>
-        </div>
-        <footer>
-            &copy; {{ date('Y') }} Bitcoin App. All rights reserved.
-        </footer>
-    </div>
+    </x-app-layout>
 </body>
 </html>

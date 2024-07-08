@@ -6,6 +6,8 @@
     <title>My Wallet</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/Bitcoin.png') }}">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+
+    <x-app-layout>
     <style>
         body {
             font-family: Figtree, ui-sans-serif, system-ui, sans-serif;
@@ -132,3 +134,4 @@
     </div>
 </body>
 </html>
+</x-app-layout>

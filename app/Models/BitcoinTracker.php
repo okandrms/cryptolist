@@ -9,13 +9,12 @@ class BitcoinTracker
 
     public function __construct()
     {
-        // Initialize properties
         $this->currentBitcoinPrice = null;
     }
 
     public function addPurchase($amountInEuros, $bitcoinPriceAtPurchase)
     {
-        $bitcoinsPurchased = $amountInEuros / $bitcoinPriceAtPurchase;
+        $bitcoinsPurchased = bcdiv($amountInEuros, $bitcoinPriceAtPurchase, 8);
         $this->purchases[] = [
             'amountInEuros' => $amountInEuros,
             'bitcoinPriceAtPurchase' => $bitcoinPriceAtPurchase,
@@ -25,41 +24,38 @@ class BitcoinTracker
 
     public function getTotalInvestment()
     {
-        $totalInvestment = 0;
+        $totalInvestment = '0.00000000';
         foreach ($this->purchases as $purchase) {
-            $totalInvestment += $purchase['amountInEuros'];
+            $totalInvestment = bcadd($totalInvestment, $purchase['amountInEuros'], 8);
         }
         return $totalInvestment;
     }
 
     public function getTotalBitcoins()
     {
-        $totalBitcoins = 0;
+        $totalBitcoins = '0.00000000';
         foreach ($this->purchases as $purchase) {
-            $totalBitcoins += $purchase['bitcoinsPurchased'];
+            $totalBitcoins = bcadd($totalBitcoins, $purchase['bitcoinsPurchased'], 8);
         }
         return $totalBitcoins;
     }
 
     public function getCurrentValue()
     {
-        return $this->getTotalBitcoins() * $this->currentBitcoinPrice;
+        return bcmul($this->getTotalBitcoins(), $this->currentBitcoinPrice, 8);
     }
 
     public function getProfitOrLoss()
     {
-        return $this->getCurrentValue() - $this->getTotalInvestment();
+        return bcsub($this->getCurrentValue(), $this->getTotalInvestment(), 8);
     }
 
-    // Method to update the current Bitcoin price
     public function setCurrentBitcoinPrice($newBitcoinPrice)
     {
-        if ($newBitcoinPrice > 0) { // Simple validation
+        if ($newBitcoinPrice > 0) {
             $this->currentBitcoinPrice = $newBitcoinPrice;
         } else {
             throw new \InvalidArgumentException('Bitcoin price must be greater than zero.');
         }
     }
 }
-
-

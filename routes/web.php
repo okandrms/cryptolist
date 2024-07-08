@@ -37,4 +37,10 @@ Route::post('bitcoin', [BitcoinController::class, 'buyBitcoin'])->name('buy.bitc
 
 Route::get('/myWallet', [WalletController::class, 'myWallet'])->name('myWallet');
 
+Route::get('/bitcoin-chart', function () {
+    return view('bitcoin_chart');
+});
+
+Route::get('/api/bitcoin-history', [FetchController::class, 'getBitcoinHistory']);
+
 require __DIR__.'/auth.php';

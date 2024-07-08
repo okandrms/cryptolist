@@ -6,6 +6,8 @@
     <title>My Wallet</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/Bitcoin.png') }}">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+
+    <x-app-layout>
     <style>
         body {
             font-family: Figtree, ui-sans-serif, system-ui, sans-serif;
@@ -98,31 +100,33 @@
     <div class="container">
         <h1>My Wallet</h1>
         <div class="info">
-            <p><strong>Total Investment:</strong> {{$totalInvestment}}</p>
-            <p><strong>Total Bitcoins:</strong> {{$totalBitcoins}}</p>
-            <p><strong>Current Bitcoin Price:</strong> {{$currentBitcoinPrice}}</p>
+            <p><strong>Total Investment:</strong> {{ number_format($totalInvestment, 2) }} EUR</p>
+            <p><strong>Total Bitcoins:</strong> {{ number_format($totalBitcoins, 8) }} BTC</p>
+            <p><strong>Current Bitcoin Price:</strong> {{ number_format($currentBitcoinPrice, 2) }} EUR</p>
+            <p><strong>Current Value:</strong> {{ number_format($currentValue, 2) }} EUR</p>
+            <p><strong>Profit/Loss:</strong> {{ number_format($profitOrLoss, 2) }} EUR</p>
             <button class="home-button" onclick="goToHomePage()">Home</button>
         </div>
         <table>
             <thead>
                 <tr>
                     <th>Date</th>
-                    <th>Amount</th>
-                    <th>Bitcoin Amount</th>
-                    <th>Price per Bitcoin</th>
-                    <th>Current Value</th>
-                    <th>Profit/Loss</th>
+                    <th>Amount (EUR)</th>
+                    <th>Bitcoin Amount (BTC)</th>
+                    <th>Price per Bitcoin (EUR)</th>
+                    <th>Current Value (EUR)</th>
+                    <th>Profit/Loss (EUR)</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($allTransactions as $transaction)
                     <tr>
                         <td>{{ $transaction->created_at }}</td>
-                        <td>{{ $transaction->amount }}</td>
-                        <td>{{ $transaction->btc_amount }}</td>
-                        <td>{{ $transaction->price_per_unit }}</td>
-                        <td>{{ $transaction->current_value }}</td>
-                        <td>{{ $transaction->profit_or_loss }}</td>
+                        <td>{{ number_format($transaction->amount, 2) }}</td>
+                        <td>{{ number_format($transaction->btc_amount, 8) }}</td>
+                        <td>{{ number_format($transaction->price_per_unit, 2) }}</td>
+                        <td>{{ number_format($transaction->current_value, 2) }}</td>
+                        <td>{{ number_format($transaction->profit_or_loss, 2) }}</td>
                     </tr>
                 @endforeach
             </tbody>
@@ -130,3 +134,4 @@
     </div>
 </body>
 </html>
+</x-app-layout>

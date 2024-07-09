@@ -169,14 +169,9 @@
     </style>
 </head>
 <body>
+    <x-app-layout>
     <div class="container">
-        <div class="header-content">
-            <h2>Bitcoin Tracker</h2>
-            <div class="button-container">
-                <a href="{{ url('/') }}"><button class="button">Home</button></a>
-                <a href="{{ url('/myWallet') }}"><button class="button">My Wallet</button></a>
-            </div>
-        </div>
+
         <div class="main-content">
             <div class="card">
                 <h3>Bitcoin Price</h3>
@@ -235,9 +230,7 @@
             </form>
         </div>
     </div>
-    <footer>
-        &copy; 2024 Bitcoin Tracker. All rights reserved.
-    </footer>
+
     <script>
         function calculate() {
             let amount = document.getElementsByName('amount')[0].value;
@@ -254,3 +247,4 @@
     </script>
 </body>
 </html>
+</x-app-layout>

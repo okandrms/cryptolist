@@ -16,17 +16,7 @@
             color: #333;
             overflow: hidden;
         }
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://kointimes.net/wp-content/uploads/2022/04/source-istock-koonsiri-boonnak.jpg');
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-        }
+
         .container {
             display: flex;
             flex-direction: column;
@@ -94,7 +84,7 @@
     </style>
 </head>
 <body>
-    <div class="background"></div>
+
 
     <x-app-layout>
         <div class="header">
@@ -108,9 +98,7 @@
                 <p>Your one-stop solution for managing your Bitcoin transactions.</p>
                 <a href="{{ url('/bitcoin-chart') }}" class="button">View Bitcoin Chart</a>
             </div>
-            <footer>
-                &copy; {{ date('Y') }} Bitcoin App. All rights reserved.
-            </footer>
+
         </div>
     </x-app-layout>
 </body>

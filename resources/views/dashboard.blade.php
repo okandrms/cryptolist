@@ -1,7 +1,7 @@
 <title>Dashboard</title>
 
 <x-app-layout>
-    <x-slot name="header">
+
         <div class="header-bg">
             <div class="container">
                 <div class="header-content">
@@ -10,7 +10,7 @@
                 </div>
             </div>
         </div>
-    </x-slot>
+
 
     <div class="container main-content">
         <div class="card">

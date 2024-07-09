@@ -106,6 +106,8 @@
     </style>
 </head>
 <body class="font-sans antialiased bg-gray-100 dark:bg-gray-900">
+
+
     <div class="min-h-screen">
         @include('layouts.navigation')
 
@@ -116,13 +118,11 @@
             </div>
         </header>
 
-        <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
+
+
     </div>
     <footer>
-        @yield('footer')
+        &copy; {{ date('Y') }} Bitcoin App. All rights reserved.
     </footer>
 </body>
 </html>

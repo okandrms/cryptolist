@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +9,6 @@
     <title>My Wallet</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/Bitcoin.png') }}">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
-    <x-app-layout>
     <style>
         body {
             font-family: Figtree, ui-sans-serif, system-ui, sans-serif;
@@ -97,6 +98,9 @@
     </script>
 </head>
 <body>
+
+    <x-app-layout>
+
     <div class="container">
         <h1>My Wallet</h1>
         <div class="info">
@@ -107,6 +111,7 @@
             <p><strong>Profit/Loss:</strong> {{ number_format($profitOrLoss, 2) }} EUR</p>
             <button class="home-button" onclick="goToHomePage()">Home</button>
         </div>
+
         <table>
             <thead>
                 <tr>
@@ -132,6 +137,8 @@
             </tbody>
         </table>
     </div>
+
 </body>
 </html>
+
 </x-app-layout>

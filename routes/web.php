@@ -32,7 +32,8 @@ Route::get('/bitcoin-price', function () {
     return $response->json();
 });
 
-Route::get('/bitcoin/display', [BitcoinController::class, 'display']);
+Route::get('/bitcoin/display', [BitcoinController::class, 'display'])->name('bitcoin.display');
+
 Route::post('bitcoin', [BitcoinController::class, 'buyBitcoin'])->name('buy.bitcoin');
 
 Route::get('/myWallet', [WalletController::class, 'myWallet'])->name('myWallet');

@@ -17,7 +17,7 @@ class CreateCryptoWalletsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('name', 191); 
+            $table->string('name', 191);
             $table->timestamps();
         });
 
@@ -27,6 +27,7 @@ class CreateCryptoWalletsTable extends Migration
             $table->unsignedBigInteger('crypto_wallet_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('crypto_wallet_id')->references('id')->on('crypto_wallets')->onDelete('cascade');
+            $table->decimal('btc_amount', 18, 8);
             $table->enum('type', ['buy', 'sell']);
             $table->decimal('amount', 18, 8);
             $table->decimal('price_per_unit', 18, 8);
@@ -62,11 +63,11 @@ class CreateCryptoWalletsTable extends Migration
 
         Schema::create('personal_access_tokens', function (Blueprint $table) {
             $table->id();
-            $table->string('tokenable_type', 191); 
+            $table->string('tokenable_type', 191);
             $table->unsignedBigInteger('tokenable_id');
-            $table->index(['tokenable_type', 'tokenable_id']); 
+            $table->index(['tokenable_type', 'tokenable_id']);
             $table->string('name', 191);
-            $table->string('token', 191)->unique(); 
+            $table->string('token', 191)->unique();
             $table->text('abilities')->nullable();
             $table->timestamp('last_used_at')->nullable();
             $table->timestamps();

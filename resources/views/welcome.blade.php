@@ -14,30 +14,60 @@
             font-family: Figtree, ui-sans-serif, system-ui, sans-serif;
             background-color: #f9f9f9;
             color: #333;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Bu, sayfanın tüm yüksekliğini kapsar */
         }
 
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+            justify-content: flex-start;
+            padding-top: 150px; /* İçeriği biraz daha aşağıya kaydırır */
+            flex: 1; /* Container, footer'ı sayfanın altına itmek için kullanılabilir */
         }
+
         .header {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             width: 100%;
             padding: 20px;
+            text-align: center;
         }
+
         .header img {
             height: 50px;
             margin-right: 15px;
         }
+
         .header h1 {
             color: #009879;
+            margin: 0;
         }
+
+        .header .buy-button {
+            display: inline-block;
+            background-color: #009879;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 10px; /* Butonu başlık altına biraz boşluk bırak */
+            transition: background-color 0.3s;
+        }
+
+        .header .buy-button:hover {
+            background-color: #007965;
+        }
+
+        .header .buy-button:focus {
+            outline: 2px solid #005f4e;
+        }
+
         .content {
             display: flex;
             flex-direction: column;
@@ -48,8 +78,8 @@
             padding: 20px;
             border-radius: 10px;
         }
+
         footer {
-            margin-top: auto;
             padding: 20px;
             text-align: center;
             font-size: 14px;
@@ -58,12 +88,14 @@
             background-color: rgba(255, 255, 255, 0.8);
             position: relative;
         }
+
         .coin-image {
             width: 250px;
             height: 250px;
             margin-bottom: 50px;
             border-radius: 50%;
         }
+
         .button {
             display: inline-block;
             background-color: #009879;
@@ -75,21 +107,21 @@
             transition: background-color 0.3s;
             margin-top: 5px;
         }
+
         .button:hover {
             background-color: #007965;
         }
+
         .button:focus {
             outline: 2px solid #005f4e;
         }
     </style>
 </head>
 <body>
-
-
     <x-app-layout>
         <div class="header">
-
             <h1>Welcome to Bitcoin Tracker App</h1>
+            <a href="{{ url('/bitcoin/display') }}" class="buy-button">Buy Bitcoin</a>
         </div>
 
         <div class="container">
@@ -98,8 +130,9 @@
                 <p>Your one-stop solution for managing your Bitcoin transactions.</p>
                 <a href="{{ url('/bitcoin-chart') }}" class="button">View Bitcoin Chart</a>
             </div>
-
         </div>
+
+
     </x-app-layout>
 </body>
 </html>

@@ -9,7 +9,9 @@ use App\Http\Controllers\FetchController;
 class WalletController extends Controller
 {
     public function myWallet() {
-        $user_id = auth()->user()->id;
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'Please login.');
+        }
         $allTransactions = Crypto_transaction::where('user_id', $user_id)->get();
 
         $totalInvestment = '0.00000000';

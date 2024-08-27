@@ -9,6 +9,10 @@ use App\Http\Controllers\FetchController;
 class BitcoinController extends Controller
 {
     public function display() {
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'Please login.');
+        }
+
         $currentBitcoinPrice = FetchController::getBitcoinPrice();
 
         $totalInvestment = '0.00000000';

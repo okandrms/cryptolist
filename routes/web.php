@@ -8,6 +8,13 @@ use App\Http\Controllers\BitcoinController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\FetchController;
 use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\Auth;
+
+Auth::routes(['verify' => true]);
+
+Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
 
 Route::get('/', function () {
     return view('welcome');
